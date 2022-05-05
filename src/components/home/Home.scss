@@ -1,0 +1,26 @@
+#home {
+    .usersContainer {
+        display: flex;
+        justify-content: center;
+        max-width: 800px;
+        max-height: 100%;
+        overflow-y: scroll;
+        margin: 20px;
+    }
+
+    .user {
+        background: white;
+        color: black;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
