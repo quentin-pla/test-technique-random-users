@@ -2,13 +2,20 @@ import React, {createContext, PropsWithChildren, useEffect, useState} from 'reac
 import {IUser} from "../models/IUser";
 import {fetchRandomUsers} from "../api/randomUsers";
 
-export interface IUsersContextData {
+export interface IUsersContext {
     users: Array<IUser>,
+    updateUser: (user: IUser) => void,
 }
 
 interface IUsersContextState {
     loaded: boolean,
     users: Array<IUser>,
+}
+
+const initialData: IUsersContext = {
+    users: new Array<IUser>(),
+    updateUser: () => {
+    }
 }
 
 const initialState: IUsersContextState = {
@@ -26,8 +33,19 @@ const UsersContextProvider = (props: PropsWithChildren<{}>) => {
         })()
     }, [])
 
-    const data: IUsersContextData = {
-        users: state.users
+    const updateUser = (user: IUser) => {
+        setState(prevState => {
+            let users = [...prevState.users];
+            const userIndex = users.findIndex(u => u.id === user.id);
+            if (userIndex < 0) throw new Error("Can't find user in users list");
+            users[userIndex] = user;
+            return {...prevState, users};
+        })
+    }
+
+    const data: IUsersContext = {
+        users: state.users,
+        updateUser
     }
 
     return (
@@ -37,6 +55,6 @@ const UsersContextProvider = (props: PropsWithChildren<{}>) => {
     )
 }
 
-export const UsersContext = createContext<IUsersContextData>(initialState);
+export const UsersContext = createContext<IUsersContext>(initialData);
 
 export default UsersContextProvider;

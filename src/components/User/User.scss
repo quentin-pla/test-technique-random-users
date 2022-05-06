@@ -10,15 +10,6 @@
         cursor: pointer;
     }
 
-    .form-container {
-        display: flex;
-        justify-content: center;
-        max-width: 800px;
-        max-height: 100%;
-        overflow-y: scroll;
-        margin: 20px;
-    }
-
     .user-picture {
         width: 200px;
         height: 200px;
@@ -27,7 +18,13 @@
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
     }
 
-    input {
+    .profile-data {
+        max-width: 800px;
+    }
 
+    .vertical-separator {
+        height: 100%;
+        width: 1px;
+        background-color: #949494;
     }
 }

@@ -1,6 +1,6 @@
 import {useContext} from "react";
-import {IUsersContextData, UsersContext} from "../../context/UsersContext";
-import {IUser} from "../../models/IUser";
+import {IUsersContext, UsersContext} from "../../../context/UsersContext";
+import {IUser} from "../../../models/IUser";
 import {useNavigate} from "react-router";
 
 export interface IHomeLogic {
@@ -8,8 +8,8 @@ export interface IHomeLogic {
     handleUserClick: (userId: string) => () => void,
 }
 
-const useLogic = (): IHomeLogic => {
-    const context = useContext<IUsersContextData>(UsersContext);
+const useHomeLogic = (): IHomeLogic => {
+    const context = useContext<IUsersContext>(UsersContext);
     const navigate = useNavigate();
 
     const handleUserClick = (userId: string) => () => {
@@ -22,4 +22,4 @@ const useLogic = (): IHomeLogic => {
     }
 }
 
-export default useLogic;
+export default useHomeLogic;

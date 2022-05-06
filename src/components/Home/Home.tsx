@@ -1,11 +1,11 @@
 import React from "react";
 import "./Home.scss";
-import useLogic from "./useLogic";
-import useRender from "./useRender";
+import useHomeLogic from "./hooks/useHomeLogic";
+import useHomeRender from "./hooks/useHomeRender";
 
 const Home = () => {
-    const logic = useLogic();
-    const render = useRender(logic);
+    const logic = useHomeLogic();
+    const render = useHomeRender(logic);
 
     return (
         <div id={"home"} className={"d-flex flex-column align-items-center mt-5 w-100"}>

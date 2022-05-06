@@ -1,8 +1,8 @@
 import './App.scss';
 import {Route, Routes} from 'react-router-dom';
-import Home from "./components/home/Home";
-import User from "./components/user/User";
-import Container from "./components/container/Container";
+import Home from "./components/Home/Home";
+import User from "./components/User/User";
+import Container from "./components/Container/Container";
 import UsersContextProvider from "./context/UsersContext";
 
 const App = () => (

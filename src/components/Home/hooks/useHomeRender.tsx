@@ -1,13 +1,13 @@
 import React from "react";
-import {IHomeLogic} from "./useLogic";
-import {IUser} from "../../models/IUser";
+import {IHomeLogic} from "./useHomeLogic";
+import {IUser} from "../../../models/IUser";
 import {Col, Row} from "react-bootstrap";
 
 export interface IHomeRender {
     users: JSX.Element,
 }
 
-const useRender = (logic: IHomeLogic): IHomeRender => {
+const useHomeRender = (logic: IHomeLogic): IHomeRender => {
 
     const renderUser = (user: IUser): JSX.Element => (
         <Col key={user.id} className={"col-12 col-md-4 p-3"}>
@@ -28,4 +28,4 @@ const useRender = (logic: IHomeLogic): IHomeRender => {
     }
 }
 
-export default useRender;
+export default useHomeRender;
