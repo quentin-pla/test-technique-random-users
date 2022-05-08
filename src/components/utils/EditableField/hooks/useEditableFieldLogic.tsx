@@ -28,12 +28,11 @@ const useEditableFieldLogic = (props: IEditableFieldProps): IEditableFieldLogic 
         setState(prevState => ({...prevState, value: props.value}))
     }, [props.value])
 
-    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        let isInvalid = false;
-        if (!!props.regexValidator) isInvalid = !props.regexValidator.test(value);
+        const isInvalid = !!props.regexValidator && !props.regexValidator.test(value);
         setState(prevState => ({...prevState, value, isInvalid: isInvalid}));
-    }
+    }, [props.regexValidator])
 
     const handleToggleEdit = useCallback(() => {
         const isEditing = !state.isEditing;

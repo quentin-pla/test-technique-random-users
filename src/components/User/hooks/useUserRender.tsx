@@ -13,7 +13,7 @@ export interface IUserRender {
 const useUserRender = (logic: IUserLogic): IUserRender => {
 
     const renderBackButton = () => (
-        <ArrowLeft className={"back-btn"} onClick={logic.handleNavigateHome}/>
+        <ArrowLeft className={"button back-btn"} onClick={logic.handleNavigateHome}/>
     )
 
     const renderProfileData = (userData: IUser) => (
@@ -78,33 +78,33 @@ const useUserRender = (logic: IUserLogic): IUserRender => {
         </Row>
     )
 
-    const renderUserProfile = (userData: IUser) => (
+    const renderUserProfile = useMemo(() => !logic.userData ? null : (
         <Row className={"profile-data pb-5"}>
             <Col className={"col-12 d-flex justify-content-center mb-3"}>
-                <img className={"user-picture"} src={userData.picture} alt={"user picture"}/>
+                <img className={"user-picture"} src={logic.userData.picture} alt={"user picture"}/>
             </Col>
             <Col className={"col-12 d-flex justify-content-center mb-4"}>
-                <h1 className={"text-center"}>{userData.name}</h1>
+                <h1 className={"text-center"}>{logic.userData.name}</h1>
             </Col>
             <Col className={"col-12"}>
                 <Row className={"justify-content-center"}>
                     <Col className={"col-12 col-md-5"}>
-                        {renderProfileData(userData)}
+                        {renderProfileData(logic.userData)}
                     </Col>
                     <Col className={"col-2 d-none d-md-flex justify-content-center"}>
                         <div className={"vertical-separator"}/>
                     </Col>
                     <Col className={"col-12 col-md-5 mt-3 mt-md-0"}>
-                        {renderLocationData(userData)}
+                        {renderLocationData(logic.userData)}
                     </Col>
                 </Row>
             </Col>
         </Row>
-    )
+    ), [])
 
     return useMemo(() => ({
         backButton: renderBackButton(),
-        profile: !logic.userData ? null : renderUserProfile(logic.userData),
+        profile: renderUserProfile,
     }), [logic.userData])
 }
 

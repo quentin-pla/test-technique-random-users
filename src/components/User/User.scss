@@ -1,13 +1,11 @@
 #user {
     .back-btn {
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 20px;
+        left: 20px;
         width: 50px;
         height: 50px;
-        padding: 10px;
-        margin: 10px;
-        cursor: pointer;
+        border-radius: 100%;
     }
 
     .user-picture {
@@ -26,5 +24,11 @@
         height: 100%;
         width: 1px;
         background-color: #949494;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .profile-data {
+            padding: 15px;
+        }
     }
 }

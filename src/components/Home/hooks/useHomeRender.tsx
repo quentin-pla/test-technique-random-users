@@ -10,20 +10,20 @@ export interface IHomeRender {
 const useHomeRender = (logic: IHomeLogic): IHomeRender => {
     const renderUser = (user: IUser): JSX.Element => (
         <Col key={user.id} className={"col-12 col-md-4 p-3"}>
-            <div className={"user"} onClick={logic.handleUserClick(user.id)}>
+            <div className={"button"} onClick={logic.handleUserClick(user.id)}>
                 {user.name}
             </div>
         </Col>
     )
 
-    const renderUsers = (users: Array<IUser>): JSX.Element => (
+    const renderUsers = (): JSX.Element => (
         <Row className={"usersContainer"}>
-            {users.map(user => renderUser(user))}
+            {logic.users.map(user => renderUser(user))}
         </Row>
     )
 
     return useMemo(() => ({
-        users: renderUsers(logic.users)
+        users: renderUsers()
     }), [logic.users])
 }
 

@@ -1,4 +1,4 @@
-import {useContext, useEffect, useMemo, useState} from "react";
+import {useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {IUsersContext, UsersContext} from "../../../context/UsersContext";
 import {IUser} from "../../../models/IUser";
 import {useNavigate} from "react-router";
@@ -28,13 +28,13 @@ const useUserLogic = (): IUserLogic => {
         if (!state.userData) return navigate("/");
     }, [])
 
-    const handleFieldUpdate: IUserLogic["handleFieldUpdate"] = (field: UserEditableField) => (value: string | number) => {
+    const handleFieldUpdate: IUserLogic["handleFieldUpdate"] = useCallback((field: UserEditableField) => (value: string | number) => {
         if (!state.userData) return;
         const updatedUser = updateUserField(state.userData, field, value);
         if (areSameUsers(state.userData, updatedUser)) return;
         setState(prevState => ({...prevState, userData: updatedUser}));
         context.updateUser(updatedUser);
-    }
+    }, [state.userData])
 
     const handleNavigateHome: IUserLogic["handleNavigateHome"] = () => {
         navigate("/");
