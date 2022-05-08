@@ -1,7 +1,6 @@
 import React, {useMemo} from "react";
 import {IHomeLogic} from "./useHomeLogic";
 import {IUser} from "../../../models/IUser";
-import {Col, Row} from "react-bootstrap";
 
 export interface IHomeRender {
     users: JSX.Element,
@@ -9,17 +8,17 @@ export interface IHomeRender {
 
 const useHomeRender = (logic: IHomeLogic): IHomeRender => {
     const renderUser = (user: IUser): JSX.Element => (
-        <Col key={user.id} className={"col-12 col-md-4 p-3"}>
+        <div key={user.id} className={"col col-12 col-md-4 p-3"}>
             <div className={"button"} onClick={logic.handleUserClick(user.id)}>
                 {user.name}
             </div>
-        </Col>
+        </div>
     )
 
     const renderUsers = (): JSX.Element => (
-        <Row className={"usersContainer"}>
+        <div className={"row usersContainer"}>
             {logic.users.map(user => renderUser(user))}
-        </Row>
+        </div>
     )
 
     return useMemo(() => ({

@@ -34,7 +34,7 @@ const useUserLogic = (): IUserLogic => {
         if (areSameUsers(state.userData, updatedUser)) return;
         setState(prevState => ({...prevState, userData: updatedUser}));
         context.updateUser(updatedUser);
-    }, [state.userData])
+    }, [state.userData, context.users])
 
     const handleNavigateHome: IUserLogic["handleNavigateHome"] = () => {
         navigate("/");

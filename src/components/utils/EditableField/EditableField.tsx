@@ -19,7 +19,7 @@ const EditableField = (props: IEditableFieldProps) => {
 
     return useMemo(() => (
         <div className={"editable-field d-flex flex-column gap-1 " + props.className}>
-            <h3>{props.label}</h3>
+            <h3 className={"no-select"}>{props.label}</h3>
             {render.field}
             {render.error}
         </div>

@@ -7,14 +7,12 @@ const User = () => {
     const logic = useUserLogic();
     const render = useUserRender(logic);
 
-    return useMemo(() => {
-        return (
-            <div id={"user"} className={"d-flex flex-column align-items-center mt-5 w-100"}>
-                {render.backButton}
-                {render.profile}
-            </div>
-        )
-    }, [logic.userData])
+    return useMemo(() => (
+        <div id={"user"} className={"d-flex flex-column align-items-center mt-5 w-100"}>
+            {render.backButton}
+            {render.profile}
+        </div>
+    ), [logic.userData])
 }
 
 export default User;

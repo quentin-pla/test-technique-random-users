@@ -1,6 +1,5 @@
 import React, {useMemo} from "react";
 import {IUserLogic, UserEditableField} from "./useUserLogic";
-import {Col, Row} from "react-bootstrap";
 import {ArrowLeft} from "react-bootstrap-icons";
 import EditableField from "../../utils/EditableField/EditableField";
 import {IUser} from "../../../models/IUser";
@@ -12,13 +11,13 @@ export interface IUserRender {
 
 const useUserRender = (logic: IUserLogic): IUserRender => {
 
-    const renderBackButton = () => (
+    const renderBackButton = useMemo(() => (
         <ArrowLeft className={"button back-btn"} onClick={logic.handleNavigateHome}/>
-    )
+    ), [])
 
     const renderProfileData = (userData: IUser) => (
-        <Row>
-            <Col className={"col-12"}>
+        <div className={"row"}>
+            <div className={"col col-12"}>
                 <h2 className={"mb-3"}>Profile</h2>
                 <EditableField
                     label={"Name"}
@@ -34,13 +33,13 @@ const useUserRender = (logic: IUserLogic): IUserRender => {
                     regexValidator={new RegExp("^[a-zA-Z0-9-_.]+@[a-zA-Z0-9]+[.]{1}[a-z]{2,3}$")}
                     errorMessage={"This email is invalid"}
                 />
-            </Col>
-        </Row>
+            </div>
+        </div>
     )
 
     const renderLocationData = (userData: IUser) => (
-        <Row>
-            <Col className={"col-12"}>
+        <div className={"row"}>
+            <div className={"col col-12"}>
                 <h2 className={"mb-3"}>Location</h2>
                 <EditableField
                     label={"Street"}
@@ -74,37 +73,37 @@ const useUserRender = (logic: IUserLogic): IUserRender => {
                     onChange={logic.handleFieldUpdate(UserEditableField.Country)}
                     className={"mb-3"}
                 />
-            </Col>
-        </Row>
+            </div>
+        </div>
     )
 
-    const renderUserProfile = useMemo(() => !logic.userData ? null : (
-        <Row className={"profile-data pb-5"}>
-            <Col className={"col-12 d-flex justify-content-center mb-3"}>
+    const renderUserProfile = () => !logic.userData ? null : (
+        <div className={"row profile-data pb-5"}>
+            <div className={"col col-12 d-flex justify-content-center mb-3"}>
                 <img className={"user-picture"} src={logic.userData.picture} alt={"user picture"}/>
-            </Col>
-            <Col className={"col-12 d-flex justify-content-center mb-4"}>
+            </div>
+            <div className={"col col-12 d-flex justify-content-center mb-4"}>
                 <h1 className={"text-center"}>{logic.userData.name}</h1>
-            </Col>
-            <Col className={"col-12"}>
-                <Row className={"justify-content-center"}>
-                    <Col className={"col-12 col-md-5"}>
+            </div>
+            <div className={"col col-12"}>
+                <div className={"row justify-content-center"}>
+                    <div className={"col col-12 col-md-5"}>
                         {renderProfileData(logic.userData)}
-                    </Col>
-                    <Col className={"col-2 d-none d-md-flex justify-content-center"}>
+                    </div>
+                    <div className={"col col-2 d-none d-md-flex justify-content-center"}>
                         <div className={"vertical-separator"}/>
-                    </Col>
-                    <Col className={"col-12 col-md-5 mt-3 mt-md-0"}>
+                    </div>
+                    <div className={"col col-12 col-md-5 mt-3 mt-md-0"}>
                         {renderLocationData(logic.userData)}
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
-    ), [])
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 
     return useMemo(() => ({
-        backButton: renderBackButton(),
-        profile: renderUserProfile,
+        backButton: renderBackButton,
+        profile: renderUserProfile(),
     }), [logic.userData])
 }
 

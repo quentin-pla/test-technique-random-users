@@ -18,8 +18,9 @@ const useEditableFieldRender = (logic: IEditableFieldLogic, props: IEditableFiel
 
     const renderInput = () => (
         <>
-            <input className={"field " + (logic.isInvalid ? "error" : "")} placeholder={props.placeHolder}
-                   value={logic.value} onChange={logic.handleInput}/>
+            <input ref={logic.inputRef} className={"field " + (logic.isInvalid ? "error" : "")}
+                   placeholder={props.placeHolder}
+                   value={logic.value} onChange={logic.handleInput} onKeyUp={logic.handleKeyUp}/>
             <Check2 size={logic.isInvalid ? 0 : 22} onClick={logic.handleToggleEdit} className={"icon"}/>
         </>
     )
