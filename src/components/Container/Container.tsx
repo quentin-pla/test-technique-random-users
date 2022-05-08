@@ -6,6 +6,6 @@ const Container = () => (
             <Outlet/>
         </div>
     </div>
-);
+)
 
 export default Container;

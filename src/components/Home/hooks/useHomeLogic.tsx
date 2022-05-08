@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useMemo} from "react";
 import {IUsersContext, UsersContext} from "../../../context/UsersContext";
 import {IUser} from "../../../models/IUser";
 import {useNavigate} from "react-router";
@@ -16,10 +16,10 @@ const useHomeLogic = (): IHomeLogic => {
         navigate("/" + userId);
     }
 
-    return {
+    return useMemo(() => ({
         users: context.users,
         handleUserClick,
-    }
+    }), [context.users])
 }
 
 export default useHomeLogic;

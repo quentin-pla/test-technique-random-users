@@ -1,4 +1,4 @@
-import React, {createContext, PropsWithChildren, useEffect, useState} from 'react';
+import React, {createContext, PropsWithChildren, useEffect, useMemo, useState} from 'react';
 import {IUser} from "../models/IUser";
 import {fetchRandomUsers} from "../api/randomUsers";
 
@@ -37,7 +37,7 @@ const UsersContextProvider = (props: PropsWithChildren<{}>) => {
         setState(prevState => {
             let users = [...prevState.users];
             const userIndex = users.findIndex(u => u.id === user.id);
-            if (userIndex < 0) throw new Error("Can't find user in users list");
+            if (userIndex < 0) throw new Error("Can't find user with id : " + user.id);
             users[userIndex] = user;
             return {...prevState, users};
         })
@@ -48,11 +48,11 @@ const UsersContextProvider = (props: PropsWithChildren<{}>) => {
         updateUser
     }
 
-    return (
+    return useMemo(() => (
         <UsersContext.Provider value={data}>
             {state.loaded ? props.children : null}
         </UsersContext.Provider>
-    )
+    ), [state.loaded, state.users])
 }
 
 export const UsersContext = createContext<IUsersContext>(initialData);
