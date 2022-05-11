@@ -2,7 +2,8 @@ import {IUser} from "../../../models/IUser";
 import {IUserLogicState, UserEditableField} from "../hooks/useUserLogic";
 
 export const getInitialState = (users: Array<IUser>): IUserLogicState => {
-    const userId = window.location.pathname.substring(1);
+    const paths = window.location.pathname.split("/");
+    const userId = paths[paths.length - 1];
     const userData = users.find(user => user.id === userId);
     return {userData: userData};
 }

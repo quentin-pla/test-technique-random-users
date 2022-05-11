@@ -13,7 +13,7 @@ const useHomeLogic = (): IHomeLogic => {
     const navigate = useNavigate();
 
     const handleUserClick = (userId: string) => () => {
-        navigate("/" + userId);
+        navigate("/test-technique-random-users/" + userId);
     }
 
     return useMemo(() => ({

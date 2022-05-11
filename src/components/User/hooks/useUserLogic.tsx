@@ -25,7 +25,7 @@ const useUserLogic = (): IUserLogic => {
 
     useEffect(() => {
         // If user has not been found, return back to home
-        if (!state.userData) return navigate("/");
+        if (!state.userData) return navigate("/test-technique-random-users");
     }, [])
 
     const handleFieldUpdate: IUserLogic["handleFieldUpdate"] = useCallback((field: UserEditableField) => (value: string | number) => {
@@ -37,7 +37,7 @@ const useUserLogic = (): IUserLogic => {
     }, [state.userData, context.users])
 
     const handleNavigateHome: IUserLogic["handleNavigateHome"] = () => {
-        navigate("/");
+        navigate("/test-technique-random-users");
     }
 
     return useMemo(() => ({
