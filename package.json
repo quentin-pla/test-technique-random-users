@@ -1,5 +1,6 @@
 {
-  "name": "frontend-coding-test",
+  "homepage": "https://quentin-pla.github.io/test-technique-random-users",
+  "name": "test-technique-random-users",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
