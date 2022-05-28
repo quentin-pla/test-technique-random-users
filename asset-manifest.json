@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/test-technique-random-users/static/css/main.72ca6161.css",
-    "main.js": "/test-technique-random-users/static/js/main.85ae2253.js",
+    "main.css": "/test-technique-random-users/static/css/main.78103be7.css",
+    "main.js": "/test-technique-random-users/static/js/main.e50276b3.js",
     "index.html": "/test-technique-random-users/index.html",
-    "main.72ca6161.css.map": "/test-technique-random-users/static/css/main.72ca6161.css.map",
-    "main.85ae2253.js.map": "/test-technique-random-users/static/js/main.85ae2253.js.map"
+    "main.78103be7.css.map": "/test-technique-random-users/static/css/main.78103be7.css.map",
+    "main.e50276b3.js.map": "/test-technique-random-users/static/js/main.e50276b3.js.map"
   },
   "entrypoints": [
-    "static/css/main.72ca6161.css",
-    "static/js/main.85ae2253.js"
+    "static/css/main.78103be7.css",
+    "static/js/main.e50276b3.js"
   ]
 }
