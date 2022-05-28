@@ -2,7 +2,7 @@ import {useUserProfileLogic} from "./UserProfileLogic.hook";
 import {useUserProfileRender} from "./UserProfileRender.hook";
 import {useEditableFieldLogic} from "./EditableFieldLogic.hook";
 import {useEditableFieldRender} from "./EditableFieldRender.hook";
-import {useUsersContextLogic} from "./UsersContextLogic";
+import {useUsersContextLogic} from "./UsersContextLogic.hook";
 
 export const UserProfileHooks = {
     useLogic: useUserProfileLogic,
